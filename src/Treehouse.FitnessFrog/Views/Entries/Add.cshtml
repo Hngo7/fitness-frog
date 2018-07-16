@@ -1,22 +1,15 @@
-﻿@model Treehouse.FitnessFrog.Models.Entry
+﻿
+@model Treehouse.FitnessFrog.Models.Entry
 @using Treehouse.FitnessFrog.Models
+
 @{
     ViewBag.Title = "Add Entry";
-    //var selectListItems = new[]
-    //{
-    //    new SelectListItem() { Value= "1", Text = "Item 1", Selected= false},
-    //    new SelectListItem() { Value= "2", Text = "Item 2", Selected= true},
-    //};
 
-    var items = new[]
-    {
-        new {Id = 1, name = "Item 1"},
-        new {Id = 2, name = "Item 2"},
-    };
-    var selectListItems = new SelectList(items, "Id", "Name");
 }
 
 <h2>@ViewBag.Title</h2>
+
+@Html.ValidationSummary("The following errors were found: ", new { @class = "alert alert-danger"})
 
 @using (Html.BeginForm())
 {
@@ -34,7 +27,7 @@
                 @Html.LabelFor(m => m.ActivityId, new { @class = "control-label" })
                 @Html.DropDownListFor(m => m.ActivityId, 
                         (SelectList)ViewBag.ActivitiesSelectListItems, "",new { @class = "form-control" })
-            </div>
+                </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Duration, new { @class = "control-label" })
